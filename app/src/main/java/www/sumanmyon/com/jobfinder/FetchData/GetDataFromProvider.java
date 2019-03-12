@@ -25,17 +25,21 @@ public class GetDataFromProvider {
     Activity activity;
     ListView listView;
     ArrayList<CreatingStandardDataFromDifferentProviderAPIs> dsFromDiffProviders;
+    DataListAdapter listAdapter;
+    CreatingStandardDataFromDifferentProviderAPIs ds;
+    JsonArrayRequest request;
 
-    public GetDataFromProvider() {
-
-    }
-
-    public void getData(final Activity activity, ListView listView, final String provider) {
+    public GetDataFromProvider(final Activity activity, ListView listView) {
         this.activity = activity;
         this.listView = listView;
 
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,
-                GitHubURL,
+        listAdapter = new DataListAdapter(activity);
+        dsFromDiffProviders = new ArrayList<>();
+    }
+
+    public void getData(String URL, final String provider) {
+        request = new JsonArrayRequest(Request.Method.GET,
+                URL,
                 null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -58,9 +62,11 @@ public class GetDataFromProvider {
     private void storeData(String provider, JSONArray data) {
         try{
             //new ToastShow(activity,data.toString());
-            dsFromDiffProviders = new ArrayList<>();
 
             for(int i=0; i<data.length(); i++){
+
+                ds = new CreatingStandardDataFromDifferentProviderAPIs();
+
                 JSONObject object = data.getJSONObject(i);
 
                 if(provider.equals("GitHub")){
@@ -76,19 +82,42 @@ public class GetDataFromProvider {
                     String how_to_apply = object.getString("how_to_apply");
                     String company_logo = object.getString("company_logo");
 
-                    dsFromDiffProviders.add(new CreatingStandardDataFromDifferentProviderAPIs(provider,
+                    ds.storeDataFromProvider(provider,
                             id,position,url,
                             start_date,company,company_url,
                             location,title,description,
-                            how_to_apply,company_logo));
+                            how_to_apply,company_logo);
 
-                    DataListAdapter listAdapter = new DataListAdapter(activity,dsFromDiffProviders);
-                    listView.setAdapter(listAdapter);
+                    dsFromDiffProviders.add(ds);
 
                 }else if(provider.equals("searchGov")){
+                    String id = object.getString("id");
+                    String position = object.getString("position_title");
+                    String company = object.getString("organization_name");
+                    String rate_interval_code = object.getString("organization_name");
+                    String minimum = object.getString("minimum");
+                    String maximum = object.getString("maximum");
+                    String start_date = object.getString("start_date");
+                    String end_date = object.getString("end_date");
 
+                    //JSONArray array = object.getJSONArray("location");
+                    String location = "";
+//                    for(int ii=0;ii<array.length();i++){
+//                        location = location+  array.get(ii).toString() + " ";
+//                    }
+                    String url = object.getString("url");
+
+                    ds.storeDataFromProvider(provider,
+                            id,position,company,
+                            rate_interval_code,minimum,maximum,
+                            start_date,end_date,location,
+                            url);
+
+                    dsFromDiffProviders.add(ds);
                 }
             }
+            listAdapter.store(dsFromDiffProviders);
+            listView.setAdapter(listAdapter);
         }catch (Exception e){
             new ToastShow(activity,e.getMessage());
         }
