@@ -1,6 +1,6 @@
 package www.sumanmyon.com.jobfinder.StandardDataStorage;
 
-public class DSFromDiffProvider {
+public class CreatingStandardDataFromDifferentProviderAPIs {
 
     //Creating attribute for different provider
     private String contentProvider;
@@ -32,11 +32,11 @@ public class DSFromDiffProvider {
     private String maximum;
 
     //Constructor for GitHub
-    public DSFromDiffProvider(String contentProvider,
-                              String id, String type, String url,
-                              String createdAt, String company, String companyURL,
-                              String location, String title, String description,
-                              String howToApply, String companyLogo){
+    public CreatingStandardDataFromDifferentProviderAPIs(String contentProvider,
+                                                         String id, String type, String url,
+                                                         String createdAt, String company, String companyURL,
+                                                         String location, String title, String description,
+                                                         String howToApply, String companyLogo){
         this.contentProvider = contentProvider;
         this.id = id;
         this.position = type;
@@ -52,11 +52,11 @@ public class DSFromDiffProvider {
     }
 
     //Constructor for search.gov
-    public DSFromDiffProvider(String contentProvider,
-                              String id, String positionTitle, String organization,
-                              String rateIntervalCode, String minimum, String maximum,
-                              String startDate, String endDate, String location,
-                              String url){
+    public CreatingStandardDataFromDifferentProviderAPIs(String contentProvider,
+                                                         String id, String positionTitle, String organization,
+                                                         String rateIntervalCode, String minimum, String maximum,
+                                                         String startDate, String endDate, String location,
+                                                         String url){
         this.contentProvider = contentProvider;
         this.id = id;
         this.position = positionTitle;
