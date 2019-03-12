@@ -31,12 +31,15 @@ public class CreatingStandardDataFromDifferentProviderAPIs {
     private String minimum;
     private String maximum;
 
-    //Constructor for GitHub
-    public CreatingStandardDataFromDifferentProviderAPIs(String contentProvider,
-                                                         String id, String type, String url,
-                                                         String createdAt, String company, String companyURL,
-                                                         String location, String title, String description,
-                                                         String howToApply, String companyLogo){
+    public CreatingStandardDataFromDifferentProviderAPIs(){
+
+    }
+    //for GitHub
+    public void storeDataFromProvider(String contentProvider,
+                                      String id, String type, String url,
+                                      String createdAt, String company, String companyURL,
+                                      String location, String title, String description,
+                                      String howToApply, String companyLogo){
         this.contentProvider = contentProvider;
         this.id = id;
         this.position = type;
@@ -51,12 +54,12 @@ public class CreatingStandardDataFromDifferentProviderAPIs {
         this.companyLogo = companyLogo;
     }
 
-    //Constructor for search.gov
-    public CreatingStandardDataFromDifferentProviderAPIs(String contentProvider,
-                                                         String id, String positionTitle, String organization,
-                                                         String rateIntervalCode, String minimum, String maximum,
-                                                         String startDate, String endDate, String location,
-                                                         String url){
+    // for search.gov
+    public void storeDataFromProvider(String contentProvider,
+                                      String id, String positionTitle, String organization,
+                                      String rateIntervalCode, String minimum, String maximum,
+                                      String startDate, String endDate, String location,
+                                      String url){
         this.contentProvider = contentProvider;
         this.id = id;
         this.title = positionTitle;
