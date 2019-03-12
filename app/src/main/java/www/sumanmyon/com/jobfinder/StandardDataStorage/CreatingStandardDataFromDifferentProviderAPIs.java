@@ -59,7 +59,7 @@ public class CreatingStandardDataFromDifferentProviderAPIs {
                                                          String url){
         this.contentProvider = contentProvider;
         this.id = id;
-        this.position = positionTitle;
+        this.title = positionTitle;
         this.company = organization;
         this.rateIntervalCode = rateIntervalCode;
         this.minimum = minimum;
