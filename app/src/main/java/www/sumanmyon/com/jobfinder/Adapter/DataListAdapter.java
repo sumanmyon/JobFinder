@@ -23,11 +23,12 @@ public class DataListAdapter extends BaseAdapter {
 
     LayoutInflater layoutInflater;
 
-    public DataListAdapter(Activity activity, ArrayList<CreatingStandardDataFromDifferentProviderAPIs> dsFromDiffProviders) {
+    public DataListAdapter(Activity activity) {
         this.activity = activity;
-        this.dsFromDiffProviders = dsFromDiffProviders;
-
         layoutInflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+    public void store(ArrayList<CreatingStandardDataFromDifferentProviderAPIs> dsFromDiffProviders) {
+        this.dsFromDiffProviders = dsFromDiffProviders;
     }
 
     @Override
@@ -52,13 +53,19 @@ public class DataListAdapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.list_item_layout,null);
 
         Holder holder = new Holder(view);
-        Picasso.get().load(dsFromDiffProviders.get(position).getCompanyLogo()).into(holder.logoImageView);
+        if(dsFromDiffProviders.get(position).getCompanyLogo()!=null) {
+            Picasso.get().load(dsFromDiffProviders.get(position).getCompanyLogo()).into(holder.logoImageView);
+        }else {
+            Picasso.get().load(R.drawable.defaultimg).into(holder.logoImageView);
+
+        }
         holder.jobTitleTextView.setText(dsFromDiffProviders.get(position).getTitle());
         holder.companyNameTextView.setText(dsFromDiffProviders.get(position).getCompany());
         holder.locationTextView.setText(dsFromDiffProviders.get(position).getLocation());
         holder.postDateTextView.setText(dsFromDiffProviders.get(position).getStartDate());
         return view;
     }
+
 
     private class Holder{
         ImageView logoImageView;
