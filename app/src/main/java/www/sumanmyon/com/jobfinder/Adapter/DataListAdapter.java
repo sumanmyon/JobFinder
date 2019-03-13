@@ -57,7 +57,7 @@ public class DataListAdapter extends BaseAdapter {
         if(dsFromDiffProviders.get(position).getCompanyLogo()!=null) {
             Picasso.get().load(dsFromDiffProviders.get(position).getCompanyLogo()).into(holder.logoImageView);
         }else {
-            Picasso.get().load(R.drawable.defaultimg).into(holder.logoImageView);
+            Picasso.get().load(R.mipmap.ic_launcher).into(holder.logoImageView);
 
         }
         holder.jobTitleTextView.setText(dsFromDiffProviders.get(position).getTitle());

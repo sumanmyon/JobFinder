@@ -120,6 +120,7 @@ public class GetDataFromProvider {
             }
             listAdapter.store(dsFromDiffProviders);
             listView.setAdapter(listAdapter);
+
             //Showing all description of listed items in another activity
             reDirectToDetailView(listView,dsFromDiffProviders);
         }catch (Exception e){
@@ -132,6 +133,8 @@ public class GetDataFromProvider {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent jobDetailIntent = new Intent(activity, JobDetailActivity.class);
+                jobDetailIntent.putExtra("positionId",position);
+
                 sendingDataInIntent(jobDetailIntent,position);
                 activity.startActivity(jobDetailIntent);
             }
