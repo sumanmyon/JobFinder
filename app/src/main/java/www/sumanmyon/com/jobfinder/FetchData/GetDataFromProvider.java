@@ -19,8 +19,6 @@ import www.sumanmyon.com.jobfinder.Adapter.DataListAdapter;
 import www.sumanmyon.com.jobfinder.ErrorAndExceptionHandler.ToastShow;
 import www.sumanmyon.com.jobfinder.StandardDataStorage.CreatingStandardDataFromDifferentProviderAPIs;
 
-import static www.sumanmyon.com.jobfinder.URLs.ProviderURLs.GitHubURL;
-
 public class GetDataFromProvider {
     Activity activity;
     ListView listView;
