@@ -20,6 +20,7 @@ import www.sumanmyon.com.jobfinder.StandardDataStorage.CreatingStandardDataFromD
 public class DataListAdapter extends BaseAdapter {
     Activity activity;
     ArrayList<CreatingStandardDataFromDifferentProviderAPIs> dsFromDiffProviders;
+    
 
     LayoutInflater layoutInflater;
 
