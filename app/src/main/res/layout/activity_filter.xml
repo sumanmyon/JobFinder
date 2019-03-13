@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.FilterActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/lightblue"
+        android:layout_margin="4dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filter"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:id="@+id/filter_job_textView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By Provider"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:maxLines="1"
+            android:id="@+id/filter_job_provider_textView" />
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By Position"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:id="@+id/filter_job_position_textView" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Android"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:id="@+id/filter_job_position_editText" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="By Location"
+            android:textSize="16dp"
+            android:layout_marginTop="4dp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:id="@+id/filter_job_location_textView" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amarillo, TX"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:id="@+id/filter_job_location_editText" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="search"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="8dp"
+            android:id="@+id/filter_job_search_button"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
