@@ -27,6 +27,7 @@ public class JobDetailActivity extends AppCompatActivity {
     Bundle getDataFromProvider;
 
     String descriptionData;
+    String howToApplyData, minimumData, maximumData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +72,21 @@ public class JobDetailActivity extends AppCompatActivity {
     }
 
     private void tabToolBar() {
+
+        //for description
         descriptionData = getDataFromProvider.getString("description");
         final Description description = new Description();
         description.data(descriptionData);
 
+        //for How to apply and others
+        howToApplyData = getDataFromProvider.getString("how_to_apply");
+        minimumData = getDataFromProvider.getString("minimum");
+        maximumData = getDataFromProvider.getString("maximum");
+        final HowToApply howToApply= new HowToApply();
+        howToApply.data(howToApplyData,minimumData,maximumData);
+
         mPagerAdapter= new FragmentPagerAdapter(getSupportFragmentManager()) {
-            private final Fragment[]  fragments= new Fragment[]{description,new HowToApply()};
+            private final Fragment[]  fragments= new Fragment[]{description,howToApply};
             private  final String title[]= new String[]{"Description","HowToApply"};
             @Override
             public Fragment getItem(int position) {
