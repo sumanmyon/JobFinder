@@ -1,4 +1,4 @@
-package www.sumanmyon.com.jobfinderdemo.Adapter;
+package www.sumanmyon.com.jobfinder.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,16 +14,16 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-import www.sumanmyon.com.jobfinderdemo.R;
-import www.sumanmyon.com.jobfinderdemo.StandardDataStorage.DSFromDiffProvider;
+import www.sumanmyon.com.jobfinder.R;
+import www.sumanmyon.com.jobfinder.StandardDataStorage.CreatingStandardDataFromDifferentProviderAPIs;
 
 public class DataListAdapter extends BaseAdapter {
     Activity activity;
-    ArrayList<DSFromDiffProvider> dsFromDiffProviders;
+    ArrayList<CreatingStandardDataFromDifferentProviderAPIs> dsFromDiffProviders;
 
     LayoutInflater layoutInflater;
 
-    public DataListAdapter(Activity activity, ArrayList<DSFromDiffProvider> dsFromDiffProviders) {
+    public DataListAdapter(Activity activity, ArrayList<CreatingStandardDataFromDifferentProviderAPIs> dsFromDiffProviders) {
         this.activity = activity;
         this.dsFromDiffProviders = dsFromDiffProviders;
 
