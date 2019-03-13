@@ -1,4 +1,4 @@
-package www.sumanmyon.com.jobfinderdemo.ErrorAndExceptionHandler;
+package www.sumanmyon.com.jobfinder.ErrorAndExceptionHandler;
 
 import android.app.Activity;
 import android.widget.Toast;
