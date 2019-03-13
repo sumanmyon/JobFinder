@@ -19,7 +19,6 @@ import www.sumanmyon.com.jobfinder.R;
 public class Description extends Fragment {
 
     String description;
-
     TextView descriptionTextView;
 
     public Description() {
@@ -45,6 +44,4 @@ public class Description extends Fragment {
 
         return view;
     }
-
-
 }
