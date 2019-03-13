@@ -5,11 +5,89 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.HowToApply">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-    
+        android:layout_margin="2dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How To Apply"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:padding="2dp"
+                android:id="@+id/fragment_howtoapply_textView"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="There is no Description about how to apply."
+                android:textSize="12dp"
+                android:textStyle="normal"
+                android:id="@+id/fragment_howtoapply_2_textView"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="8dp"
+                android:padding="1dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Minimum :"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_weight="0.1"
+                    android:id="@+id/fragment_howtoapply_minimum_textView"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="12dp"
+                    android:textStyle="normal"
+                    android:layout_weight="0.9"
+                    android:id="@+id/fragment_howtoapply_minimum_2_textView"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="1dp"
+                android:padding="2dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maximum :"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_weight="0.1"
+                    android:id="@+id/fragment_howtoapply_maximum_textView"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="12dp"
+                    android:textStyle="normal"
+                    android:layout_weight="0.9"
+                    android:id="@+id/fragment_howtoapply_maximum_2_textView"/>
+            </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apply"
+                android:textSize="10dp"
+                android:layout_gravity="end"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/fragment_howtoapply_button"
+                android:layout_marginTop="8dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>
