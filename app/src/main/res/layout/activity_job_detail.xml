@@ -1,9 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.JobDetailActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/job_detail_relative_layout">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:src="@drawable/jobsearch"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:id="@+id/job_detail_default_imageView"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/job_detail_logo_imageView"
+                    android:layout_width="88dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="end|bottom|center"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/ic_launcher" />
+            </LinearLayout>
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="4dp"
+            android:layout_gravity="center"
+            android:layout_below="@+id/job_detail_relative_layout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Job Title"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:id="@+id/job_detail_job_textView"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Company Name"
+                android:textSize="14dp"
+                android:textStyle="normal"
+                android:maxLines="1"
+                android:id="@+id/job_detail_company_textView"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="14dp"
+                android:textStyle="normal"
+                android:maxLines="1"
+                android:id="@+id/job_detail_location_textView"/>
+
+        </LinearLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:fadeScrollbars="true"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:tabMode="fixed"
+            android:background="@color/white"
+            style="@style/MyCustomTabLayout"
+
+            app:tabSelectedTextColor="@color/selecter_color"
+            app:tabTextColor="#000"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#fff"/>
+    </LinearLayout>
+
+</RelativeLayout>

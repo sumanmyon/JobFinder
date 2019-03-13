@@ -6,5 +6,6 @@
 
     <color name="lightblue">#e3f2fd</color>
     <color name="white">#ffffff</color>
+    <color name="selecter_color">#2196F3</color>
 
 </resources>
