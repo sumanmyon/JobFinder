@@ -21,8 +21,12 @@ public class JobDetailActivity extends AppCompatActivity {
     FragmentPagerAdapter mPagerAdapter;
     ViewPager viewPager;
 
-    TextView jobTitleTextView, comapnyNameTextView, locationTextView;
+    TextView jobTitleTextView, comapnyNameTextView, locationTextView, startDateTextView;
     ImageView logoImageView;
+
+    Bundle getDataFromProvider;
+
+    String descriptionData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +39,27 @@ public class JobDetailActivity extends AppCompatActivity {
         jobTitleTextView = (TextView)findViewById(R.id.job_detail_job_textView);
         comapnyNameTextView = (TextView)findViewById(R.id.job_detail_company_textView);
         locationTextView = (TextView)findViewById(R.id.job_detail_location_textView);
+        startDateTextView = (TextView)findViewById(R.id.job_detail_start_textView);
 
         logoImageView = (ImageView)findViewById(R.id.job_detail_logo_imageView);
+
+        getDataFromProvider = getIntent().getExtras();
 
         showingDataInFields();
         tabToolBar();
     }
 
     private void showingDataInFields() {
-        Bundle getDataFromProvider = getIntent().getExtras();
         String title = getDataFromProvider.getString("title");
         String companyName = getDataFromProvider.getString("company");
         String location = getDataFromProvider.getString("location");
         String logo = getDataFromProvider.getString("company_logo");
+        String date = getDataFromProvider.getString("start_date");
 
         jobTitleTextView.setText(title);
         comapnyNameTextView.setText(companyName);
         locationTextView.setText(location);
+        startDateTextView.setText(date);
 
         //for logo
         if(logo!=null){
@@ -63,8 +71,12 @@ public class JobDetailActivity extends AppCompatActivity {
     }
 
     private void tabToolBar() {
+        descriptionData = getDataFromProvider.getString("description");
+        final Description description = new Description();
+        description.data(descriptionData);
+
         mPagerAdapter= new FragmentPagerAdapter(getSupportFragmentManager()) {
-            private final Fragment[]  fragments= new Fragment[]{new Description(),new HowToApply()};
+            private final Fragment[]  fragments= new Fragment[]{description,new HowToApply()};
             private  final String title[]= new String[]{"Description","HowToApply"};
             @Override
             public Fragment getItem(int position) {
