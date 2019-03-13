@@ -1,6 +1,9 @@
 package www.sumanmyon.com.jobfinder.FetchData;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -15,6 +18,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import www.sumanmyon.com.jobfinder.Activity.JobDetailActivity;
 import www.sumanmyon.com.jobfinder.Adapter.DataListAdapter;
 import www.sumanmyon.com.jobfinder.ErrorAndExceptionHandler.ToastShow;
 import www.sumanmyon.com.jobfinder.StandardDataStorage.CreatingStandardDataFromDifferentProviderAPIs;
@@ -57,7 +61,7 @@ public class GetDataFromProvider {
         requestQueue.add(request);
     }
 
-    private void storeData(String provider, JSONArray data) {
+    private void storeData(final String provider, JSONArray data) {
         try{
             //new ToastShow(activity,data.toString());
 
@@ -116,8 +120,40 @@ public class GetDataFromProvider {
             }
             listAdapter.store(dsFromDiffProviders);
             listView.setAdapter(listAdapter);
+            //Showing all description of listed items in another activity
+            reDirectToDetailView(listView,dsFromDiffProviders);
         }catch (Exception e){
             new ToastShow(activity,e.getMessage());
         }
+    }
+
+    private void reDirectToDetailView(ListView listView, final ArrayList<CreatingStandardDataFromDifferentProviderAPIs> dsFromDiffProviders) {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent jobDetailIntent = new Intent(activity, JobDetailActivity.class);
+                sendingDataInIntent(jobDetailIntent,position);
+                activity.startActivity(jobDetailIntent);
+            }
+        });
+    }
+
+    private void sendingDataInIntent(Intent jobDetailIntent, int position) {
+        jobDetailIntent.putExtra("provider",dsFromDiffProviders.get(position).getContentProvider());
+        jobDetailIntent.putExtra("id",dsFromDiffProviders.get(position).getId());
+        jobDetailIntent.putExtra("type",dsFromDiffProviders.get(position).getPosition());
+        jobDetailIntent.putExtra("url",dsFromDiffProviders.get(position).getUrl());
+        jobDetailIntent.putExtra("start_date",dsFromDiffProviders.get(position).getStartDate());
+        jobDetailIntent.putExtra("end_date",dsFromDiffProviders.get(position).getEndDate());
+        jobDetailIntent.putExtra("company",dsFromDiffProviders.get(position).getCompany());
+        jobDetailIntent.putExtra("company_url",dsFromDiffProviders.get(position).getCompanyURL());
+        jobDetailIntent.putExtra("location",dsFromDiffProviders.get(position).getLocation());
+        jobDetailIntent.putExtra("title",dsFromDiffProviders.get(position).getTitle());
+        jobDetailIntent.putExtra("description",dsFromDiffProviders.get(position).getDescription());
+        jobDetailIntent.putExtra("how_to_apply",dsFromDiffProviders.get(position).getHowToApply());
+        jobDetailIntent.putExtra("company_logo",dsFromDiffProviders.get(position).getCompanyLogo());
+        jobDetailIntent.putExtra("rate_interval_code",dsFromDiffProviders.get(position).getRateIntervalCode());
+        jobDetailIntent.putExtra("minimum",dsFromDiffProviders.get(position).getMinimum());
+        jobDetailIntent.putExtra("maximum",dsFromDiffProviders.get(position).getMaximum());
     }
 }
