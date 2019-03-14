@@ -64,7 +64,7 @@ public class GetDataFromProvider {
     private void storeData(final String provider, JSONArray data) {
         try{
             //new ToastShow(activity,data.toString());
-
+            String test = "";
             for(int i=0; i<data.length(); i++){
 
                 ds = new CreatingStandardDataFromDifferentProviderAPIs();
@@ -102,11 +102,18 @@ public class GetDataFromProvider {
                     String start_date = object.getString("start_date");
                     String end_date = object.getString("end_date");
 
-                    //JSONArray array = object.getJSONArray("location");
+                    JSONArray array = object.getJSONArray("locations");
                     String location = "";
-//                    for(int ii=0;ii<array.length();i++){
-//                        location = location+  array.get(ii).toString() + " ";
-//                    }
+                    if(array.length() == 1){
+                        location = array.get(0).toString();
+                    }else {
+                        for(int ii=0; ii<array.length(); ii++){
+                            if(ii<array.length()-1)
+                                location = location +array.get(ii).toString()+" ; ";
+                            else
+                                location = location +array.get(ii).toString();
+                        }
+                    }
                     String url = object.getString("url");
 
                     ds.storeDataFromProvider(provider,
