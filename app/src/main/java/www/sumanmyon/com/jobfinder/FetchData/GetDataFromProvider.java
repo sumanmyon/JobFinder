@@ -20,8 +20,12 @@ import java.util.ArrayList;
 
 import www.sumanmyon.com.jobfinder.Activity.JobDetailActivity;
 import www.sumanmyon.com.jobfinder.Adapter.DataListAdapter;
+import www.sumanmyon.com.jobfinder.CheckNetwork.NetworkConnection;
 import www.sumanmyon.com.jobfinder.ErrorAndExceptionHandler.ToastShow;
 import www.sumanmyon.com.jobfinder.StandardDataStorage.CreatingStandardDataFromDifferentProviderAPIs;
+
+import static www.sumanmyon.com.jobfinder.URLs.ProviderURLs.GitHubURL;
+import static www.sumanmyon.com.jobfinder.URLs.ProviderURLs.searchGovURL;
 
 public class GetDataFromProvider {
     Activity activity;
@@ -31,12 +35,16 @@ public class GetDataFromProvider {
     CreatingStandardDataFromDifferentProviderAPIs ds;
     JsonArrayRequest request;
 
+    NetworkConnection connection;
+
     public GetDataFromProvider(final Activity activity, ListView listView) {
         this.activity = activity;
         this.listView = listView;
 
         listAdapter = new DataListAdapter(activity);
         dsFromDiffProviders = new ArrayList<>();
+
+        connection = new NetworkConnection(activity);
     }
 
     public void getData(String URL, final String provider) {
@@ -64,7 +72,7 @@ public class GetDataFromProvider {
     private void storeData(final String provider, JSONArray data) {
         try{
             //new ToastShow(activity,data.toString());
-
+            String test = "";
             for(int i=0; i<data.length(); i++){
 
                 ds = new CreatingStandardDataFromDifferentProviderAPIs();
@@ -102,11 +110,18 @@ public class GetDataFromProvider {
                     String start_date = object.getString("start_date");
                     String end_date = object.getString("end_date");
 
-                    //JSONArray array = object.getJSONArray("location");
+                    JSONArray array = object.getJSONArray("locations");
                     String location = "";
-//                    for(int ii=0;ii<array.length();i++){
-//                        location = location+  array.get(ii).toString() + " ";
-//                    }
+                    if(array.length() == 1){
+                        location = array.get(0).toString();
+                    }else {
+                        for(int ii=0; ii<array.length(); ii++){
+                            if(ii<array.length()-1)
+                                location = location +array.get(ii).toString()+" ; ";
+                            else
+                                location = location +array.get(ii).toString();
+                        }
+                    }
                     String url = object.getString("url");
 
                     ds.storeDataFromProvider(provider,
@@ -132,11 +147,16 @@ public class GetDataFromProvider {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent jobDetailIntent = new Intent(activity, JobDetailActivity.class);
-                jobDetailIntent.putExtra("positionId",position);
+                if(connection.isNetworkConnection()){
+                    Intent jobDetailIntent = new Intent(activity, JobDetailActivity.class);
+                    jobDetailIntent.putExtra("positionId",position);
 
-                sendingDataInIntent(jobDetailIntent,position);
-                activity.startActivity(jobDetailIntent);
+                    sendingDataInIntent(jobDetailIntent,position);
+                    activity.startActivity(jobDetailIntent);
+                }else {
+                    new ToastShow(activity,"Please check your network.");
+                }
+
             }
         });
     }
