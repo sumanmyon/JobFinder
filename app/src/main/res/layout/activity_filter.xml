@@ -5,81 +5,107 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.FilterActivity">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/lightblue"
-        android:layout_margin="4dp">
-        <TextView
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Filter"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:maxLines="1"
-            android:id="@+id/filter_job_textView" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="By Provider"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:maxLines="1"
-            android:id="@+id/filter_job_provider_textView" />
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-             android:layout_marginTop="4dp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/lightblue"
+            android:layout_margin="4dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Filter"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:id="@+id/filter_job_textView" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="By Provider"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:maxLines="1"
+                android:id="@+id/filter_job_provider_textView" />
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:layout_marginTop="4dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="By Position"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:maxLines="1"
-            android:id="@+id/filter_job_position_textView" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="By Position"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:id="@+id/filter_job_position_textView" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Android"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginTop="2dp"
-            android:maxLines="1"
-            android:id="@+id/filter_job_position_editText" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="By Location"
-            android:textSize="16dp"
-            android:layout_marginTop="4dp"
-            android:textStyle="bold"
-            android:maxLines="1"
-            android:id="@+id/filter_job_location_textView" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Android"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp"
+                android:maxLines="1"
+                android:id="@+id/filter_job_position_editText" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="By Location"
+                android:textSize="16dp"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:id="@+id/filter_job_location_textView" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Amarillo, TX"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="1"
+                    android:id="@+id/filter_job_location_editText" />
+                <ImageView
+                    android:id="@+id/clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="right|center_vertical"
+                    android:contentDescription="@string/app_name"
+                    android:padding="16dp"
+                    android:visibility="gone"
+                    tools:ignore="RtlCompat" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Amarillo, TX"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:layout_marginTop="2dp"
-            android:maxLines="1"
-            android:id="@+id/filter_job_location_editText" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_margin="8dp"
+                    android:layout_below="@+id/filter_job_location_editText" />
+            </RelativeLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="search"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginTop="8dp"
-            android:id="@+id/filter_job_search_button"/>
-    </LinearLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="search"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="8dp"
+                android:id="@+id/filter_job_search_button"/>
+        </LinearLayout>
 
-
+    </ScrollView>
 </RelativeLayout>
