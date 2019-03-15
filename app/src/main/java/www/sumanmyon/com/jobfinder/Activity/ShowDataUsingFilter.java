@@ -26,6 +26,7 @@ public class ShowDataUsingFilter extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String provider = bundle.getString("provider");
         String words = bundle.getString("query");
+        String location = bundle.getString("location");
 
         String getURLForSearch = null;
         if(provider.equals("GitHub")){
@@ -34,18 +35,30 @@ public class ShowDataUsingFilter extends AppCompatActivity {
         else if(provider.equals("searchGov"))
             getURLForSearch = searchGovURL;
 
-        if(!words.equals("")){
-            if(provider.equals("GitHub")){
-                String query = "?description="+convertingWordsToQuery(words);
-                getURLForSearch = getURLForSearch + query;
+        if(!location.equals("")){
+             if(!words.equals("")){
+                if(provider.equals("GitHub")){
+                    String query = "?description="+convertingWordsToQuery(words);
+                    String loc = "&location="+convertingWordsToQuery(location);
+                    getURLForSearch = getURLForSearch + query + loc;
+                }
+                else if(provider.equals("searchGov")) {
+                    String query = "?query="+convertingWordsToQuery(words);
+                    String loc = "&tags="+convertingWordsToQuery(location);
+                    getURLForSearch = getURLForSearch + query + loc;
+                }
+            }else{
+                if(provider.equals("GitHub")){
+                    String query = "?location="+convertingWordsToQuery(location);
+                    getURLForSearch = getURLForSearch + query;
+                }
+                else if(provider.equals("searchGov")) {
+                    String query = "?tags="+convertingWordsToQuery(location);
+                    getURLForSearch = getURLForSearch + query;
+                }
             }
-            else if(provider.equals("searchGov")) {
-                String query = "?query="+convertingWordsToQuery(words);
-                getURLForSearch = getURLForSearch + query;
-            }
-
         }
-        new ToastShow(this,getURLForSearch);
+        //new ToastShow(this,getURLForSearch);
         
         //get data from provider
         GetDataFromProvider getDataFromProvider = new GetDataFromProvider(this,listView);
