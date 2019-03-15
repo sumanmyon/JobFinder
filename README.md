@@ -114,6 +114,9 @@ To make URL call with query parameters, the query should follow like this patter
 
 ##### 3. By Location (autocomplete) using Google APIs
 
+(Still under construction - by location)
+
+
 
 ### Built Configuration
 This project was build on 3.3.2 gradle.
