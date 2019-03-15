@@ -58,7 +58,7 @@ Sample Code :
                 getURLForSearch = searchGovURL;
 
 ##### 2. By Position
-User can type for which job vacancy post. Let's take example for..
+User can type position for which job vacancy post. Let's take example for..
 
     java developers
     
@@ -113,8 +113,46 @@ To make URL call with query parameters, the query should follow like this patter
         
 
 ##### 3. By Location (autocomplete) using Google APIs
+At first set Google service key in manifest file inside application 
 
-(Still under construction - by location)
+        <!-- Google API -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="Your_API_KEY"/>
+
+
+User can type location for which job vacancy post. Let's take example for..
+
+       usa
+       canada
+       nepal etc.
+    
+If provider filter is not select then by default it is set to GitHub.
+
+
+        if(!location.equals("")){
+             if(!words.equals("")){
+                if(provider.equals("GitHub")){
+                    String query = "?description="+convertingWordsToQuery(words);
+                    String loc = "&location="+convertingWordsToQuery(location);
+                    getURLForSearch = getURLForSearch + query + loc;
+                }
+                else if(provider.equals("searchGov")) {
+                    String query = "?query="+convertingWordsToQuery(words);
+                    String loc = "&tags="+convertingWordsToQuery(location);
+                    getURLForSearch = getURLForSearch + query + loc;
+                }
+            }else{
+                if(provider.equals("GitHub")){
+                    String query = "?location="+convertingWordsToQuery(location);
+                    getURLForSearch = getURLForSearch + query;
+                }
+                else if(provider.equals("searchGov")) {
+                    String query = "?tags="+convertingWordsToQuery(location);
+                    getURLForSearch = getURLForSearch + query;
+                }
+            }
+        }
 
 
 
@@ -128,8 +166,13 @@ This project was build on 3.3.2 gradle.
 and Dependencies
 
     dependencies { 
+        //Gradle - To fetch data using volley
         implementation 'com.android.volley:volley:1.1.1'
+        //To show images by picasso
         implementation 'com.squareup.picasso:picasso:2.71828'
+        
+        //gradle library for google place api
+        implementation 'com.google.android.gms:play-services:11.8.0'
     }
 
 ### Contribution
