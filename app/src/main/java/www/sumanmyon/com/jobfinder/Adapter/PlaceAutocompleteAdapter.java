@@ -1,4 +1,4 @@
-package www.sumanmyon.com.autocompletegoogleplace2;
+package www.sumanmyon.com.jobfinder.Adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -27,7 +27,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
-public class PlaceAutocompleteAdapter  extends RecyclerView.Adapter<PlaceAutocompleteAdapter.PlaceViewHolder> implements Filterable {
+import www.sumanmyon.com.jobfinder.R;
+
+public class PlaceAutocompleteAdapter extends RecyclerView.Adapter<PlaceAutocompleteAdapter.PlaceViewHolder>
+        implements Filterable {
 
     public interface PlaceAutoCompleteInterface {
         public void onPlaceClick(ArrayList<PlaceAutocomplete> mResultList, int position);
@@ -127,8 +130,6 @@ public class PlaceAutocompleteAdapter  extends RecyclerView.Adapter<PlaceAutocom
             // Confirm that the query completed successfully, otherwise return null
             final Status status = autocompletePredictions.getStatus();
             if (!status.isSuccess()) {
-//                Toast.makeText(mContext, "Error contacting API: " + status.toString(),
-//                        Toast.LENGTH_SHORT).show();
                 Log.e("", "Error getting autocomplete prediction API call: " + status.toString());
                 autocompletePredictions.release();
                 return null;
