@@ -14,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- Setting google api key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA5jt2BtyFv-mF1D8fu2TnmyYqSLPiWBg0"/>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
